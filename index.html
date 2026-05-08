@@ -5,71 +5,60 @@
 <title>HOME | LIS.DOCTOR</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
-<script>
-(function(){
-  const s=localStorage.getItem('theme');
-  if(s==='dark'||(! s&&window.matchMedia('(prefers-color-scheme: dark)').matches))
-    document.documentElement.setAttribute('data-theme','dark');
-})();
-</script>
+<script>(function(){var s=localStorage.getItem('theme');if(s==='dark'||(!s&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.setAttribute('data-theme','dark');})()</script>
 </head>
 <body>
 
-<button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false">
+<button class="hamburger" id="hamburger" aria-label="Open navigation">
   <span></span><span></span><span></span>
 </button>
 <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
 <div class="page-wrapper">
   <aside class="sidebar">
-    <div class="sidebar-inner">
-      <a class="sidebar-logo" href="https://lis.doctor/">LIS.DOCTOR</a>
-      <div class="theme-toggle">
-        <button class="toggle-pill" id="theme-pill" aria-label="Toggle light/dark mode">
-          <span class="pill-option active" data-mode="light">Light</span>
-          <span class="pill-option" data-mode="dark">Dark</span>
-        </button>
-      </div>
-      <div class="sidebar-nav-wrap">
-      <nav>
-        <a href="https://lis.doctor/">Home</a>
-        <a href="https://lis.doctor/about">About</a>
-        <a href="https://lis.doctor/now">Now</a>
-        <a href="https://acthealth.org/primary-care-west-hartford/" target="_blank">Active Health ↗</a>
-        <a href="https://lis.doctor/topics">Medical Topics</a>
-        <a href="https://lis.doctor/books">Books</a>
-        <a href="https://lis.doctor/quotes">Quotes</a>
-        <a href="https://lis.doctor/resources">Resources</a>
-        <a href="https://lis.doctor/drumming">Drumming</a>
-        <a href="https://lis.doctor/speaking">Speaking/Events</a>
-        <a href="https://vitalishealthspan.com" target="_blank">Vitalis ↗</a>
-        <a href="https://lis.doctor/terms">Terms</a>
-      </nav>
-      </div>
-    </div>
+    <a class="sidebar-logo" href="https://lis.doctor/">
+      <span class="sidebar-logo-text">LIS.DOCTOR</span>
+      <span class="sidebar-logo-bar"></span>
+    </a>
+    <nav>
+      <a href="https://lis.doctor/">Home</a>
+      <a href="https://lis.doctor/about">About</a>
+      <a href="https://lis.doctor/now">Now</a>
+      <a href="https://acthealth.org/primary-care-farmington-west-hartford/" target="_blank">Active Health ↗</a>
+      <a href="https://lis.doctor/topics">Medical Topics</a>
+      <a href="https://lis.doctor/books">Books</a>
+      <a href="https://lis.doctor/quotes">Quotes</a>
+      <a href="https://lis.doctor/resources">Resources</a>
+      <a href="https://lis.doctor/drumming">Drumming</a>
+      <a href="https://lis.doctor/speaking">Speaking/Events</a>
+      <a href="https://vitalishealthspan.com" target="_blank">Vitalis ↗</a>
+      <a href="https://lis.doctor/terms">Terms</a>
+    </nav>
   </aside>
 
     <main class="main-content">
+    <div class="theme-toggle-wrap">
+      <div class="toggle-pill" id="theme-pill">
+        <span class="pill-option active" data-mode="light">Light</span>
+        <span class="pill-option" data-mode="dark">Dark</span>
+      </div>
+    </div>
 
     <div class="home-header">
       <h1 class="home-title">LIS.DOCTOR</h1>
-      <p class="home-subtitle">Jonathan Lis, MD &nbsp;·&nbsp; Primary Care &nbsp;·&nbsp; West Hartford, CT</p>
+      <span class="home-title-bar"></span>
+      <p class="home-subtitle">Jonathan Lis, MD &nbsp;&middot;&nbsp; Membership Primary Care &nbsp;&middot;&nbsp; Farmington / West Hartford, CT</p>
     </div>
 
-    <p class="home-intro">
-      Welcome. This site is a reference guide for my patients and a repository of my personal thoughts — a curated collection of resources, documents, and ideas I find useful enough to share. Feel free to explore.
-    </p>
-    <p class="home-intro" style="margin-top:-16px; font-size:0.88rem; color:var(--text-muted);">
-      All opinions expressed here are my own and not reflective of any organization. None of the content is AI-generated.
-    </p>
+    <p class="home-intro">Welcome. This site is a reference guide for my patients and a repository of my personal thoughts &mdash; a curated collection of resources, documents, and ideas I find useful enough to share. Feel free to explore.</p>
+    <p class="home-disclaimer">All opinions expressed here are my own and not reflective of any organization. None of the content is AI-generated.</p>
 
     <div class="announcement-card">
-      <h2>🏆 New Practice — Active Health Medical</h2>
+      <h2>&#127942; New Practice &mdash; Active Health Medical</h2>
       <img class="award-img" src="pub/BestOfWeHa2025.png" alt="Best of West Hartford 2025">
-      <p>I've partnered with <a href="https://acthealth.org" target="_blank">Active Health</a> to offer what I believe is the highest quality preventive care available — combining primary care with health coaching, gym access, personal training, body composition testing, and VO₂ max assessment.</p>
+      <p>I've partnered with <a href="https://acthealth.org" target="_blank">Active Health</a> to offer what I believe is the highest quality preventive care available &mdash; combining primary care with health coaching, gym access, personal training, body composition testing, and VO&#8322; max assessment.</p>
       <p>We were just voted <strong>Best Doctor</strong> in the <em>2025 Best of West Hartford.</em></p>
-      <p>The practice is membership-based and currently located in Waterbury, returning to the West Hartford area in 2026.</p>
-      <div style="clear:both;"></div>
+      <p>The practice is membership-based and recently relocated to Farmington, CT &mdash; just over the West Hartford line.</p>
 
       <div class="membership-grid">
         <div class="membership-card">
@@ -84,14 +73,14 @@
         </div>
       </div>
 
-      <p><a href="https://acthealth.org/primary-care-west-hartford/" target="_blank">Learn more and sign up →</a></p>
+      <p><a href="https://acthealth.org/primary-care-farmington-west-hartford/" target="_blank">Learn more and sign up &rarr;</a></p>
     </div>
 
     <div class="contact-section">
-      <p>Questions about the practice? <a href="mailto:info@acthealth.org">info@acthealth.org</a></p>
-      <p>Questions about this website? <a href="mailto:jonathan@lis.doctor">jonathan@lis.doctor</a></p>
-      <p style="font-size:0.82rem; margin-top:8px;">No clinical questions will be answered by email.</p>
-      <p style="margin-top:16px;"><a href="terms/">Terms of Use</a></p>
+      <p>Questions about the practice? Email info[at]acthealth[dot]org</p>
+      <p>Questions about this website? Email jonathan[at]lis[dot]doctor</p>
+      <p style="font-size:0.82rem; margin-top:6px;">(Absolutely no clinical questions will be answered)</p>
+      <p style="margin-top:14px;"><a href="terms/">Terms of Use</a></p>
       <p class="copyright">Copyright &copy; 2026 JBL IP, LLC</p>
     </div>
 
