@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ABOUT | LIS.DOCTOR</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/style.css">
+<script>
+(function(){
+  const s=localStorage.getItem('theme');
+  if(s==='dark'||(! s&&window.matchMedia('(prefers-color-scheme: dark)').matches))
+    document.documentElement.setAttribute('data-theme','dark');
+})();
+</script>
+</head>
+<body>
+
+<button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<div class="page-wrapper">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <a class="sidebar-logo" href="https://lis.doctor/">LIS.DOCTOR</a>
+      <div class="sidebar-nav-wrap">
+      <nav>
+        <a href="https://lis.doctor/">Home</a>
+        <a href="https://lis.doctor/about">About</a>
+        <a href="https://lis.doctor/now">Now</a>
+        <a href="https://acthealth.org/primary-care-west-hartford/" target="_blank">Active Health ↗</a>
+        <a href="https://lis.doctor/topics">Medical Topics</a>
+        <a href="https://lis.doctor/books">Books</a>
+        <a href="https://lis.doctor/quotes">Quotes</a>
+        <a href="https://lis.doctor/resources">Resources</a>
+        <a href="https://lis.doctor/drumming">Drumming</a>
+        <a href="https://lis.doctor/speaking">Speaking/Events</a>
+        <a href="https://vitalishealthspan.com" target="_blank">Vitalis ↗</a>
+        <a href="https://lis.doctor/terms">Terms</a>
+      </nav>
+      </div>
+      <div class="theme-toggle">
+        <button id="theme-btn" aria-label="Toggle dark mode" title="Toggle dark mode">&#9790;</button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+<hr style="margin-top:0;">
+<h2>ABOUT</h2>
+<p>
+Welcome. My name is Jon Lis, and in my day job I'm a primary care physician in central Connecticut. 
+<p>
+This website/blog is a culmination and a compilation of interesting ideas and information, largely gathered from others much brighter than myself. It is a selfish project to help me keep everything in one place, easily sharable to others through hyperlinks and the magic of the internet. It focuses on medical and non-medical topics alike, and is exclusive to things that interest me. Learn what the website is NOT by reading the <a href="https://lis.doctor/terms.html">Terms of Use</a>. 
+<p>
+My formal education includes:
+<br>  - B.A. (Chemistry)* from Wesleyan University
+<br>  - M.D. from University of Connecticut School of Medicine
+<br>  - Residency in Internal Medicine / Primary Care, Yale University School of Medicine
+<br>  - Board Certified by American Board of Internal Medicine (ABIM)
+<p>
+I have several core personal beliefs:
+<ol>
+	<li>Physicians should taste their own medicine (i.e. they should practice what they preach)</li>
+	<li>Changing one's mind in the face of better evidence is imperative</li>
+	<li>Every fact has a half-life - don't believe everything you think</li>
+	<li>Climate change is the single most important global health issue facing our world today**</li>
+</ol>
+<p>
+Outside of the practice of medicine, I enjoy devouring audiobooks (check out my favorites <a href="https://lis.doctor/books">HERE</a>) and Podcasts, playing the drums, lifting heavy things, and spending time with my family. 
+<p>
+Check out what I'm currently doing on my <a href="https://lis.doctor/now">NOW</a> page. 
+<p>
+I am not on any social media whatsoever. If you have something compelling you need to share, <a href="mailto:jonathan@lis.doctor" target="_blank">e-mail me</a>. 
+<p>
+* Yes, you read that correctly. That is a Bachelor of <em>Arts</em>, not Science, in Chemistry.
+<br>** Disagree? Read this <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(18)32594-7/fulltext" target="_blank">2018 report by Watts et. al. published in The Lancet</a>. For a less technical and much shorter read outlining why uncertainty about the climate crisis underscores the importance of addressing it, <a href="https://www.fooledbyrandomness.com/climateletter.pdf" target="_blank">read this</a>
+<p class="copyright">Copyright &copy; 2026 JBL IP, LLC
+  </main>
+</div>
+
+<script src="/site.js"></script>
+</body>
+</html>
