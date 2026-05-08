@@ -1,4 +1,4 @@
-// Dark mode
+// Apply theme immediately before paint (also inlined in each page head)
 (function() {
   const saved = localStorage.getItem('theme');
   if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -7,37 +7,42 @@
 })();
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Theme toggle
-  const btn = document.getElementById('theme-btn');
-  if (btn) {
-    function updateIcon() {
+
+  // --- Pill toggle ---
+  const pill = document.getElementById('theme-pill');
+  if (pill) {
+    function updatePill() {
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      btn.innerHTML = isDark ? '&#9728;' : '&#9790;';
-      btn.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+      const lightOpt = pill.querySelector('[data-mode="light"]');
+      const darkOpt  = pill.querySelector('[data-mode="dark"]');
+      if (lightOpt) lightOpt.classList.toggle('active', !isDark);
+      if (darkOpt)  darkOpt.classList.toggle('active', isDark);
     }
-    updateIcon();
-    btn.addEventListener('click', function() {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
-      localStorage.setItem('theme', isDark ? 'light' : 'dark');
-      updateIcon();
+    updatePill();
+    pill.addEventListener('click', function(e) {
+      const opt = e.target.closest('[data-mode]');
+      if (!opt) return;
+      const mode = opt.getAttribute('data-mode');
+      document.documentElement.setAttribute('data-theme', mode);
+      localStorage.setItem('theme', mode);
+      updatePill();
     });
   }
 
-  // Mobile hamburger
+  // --- Mobile hamburger ---
   const hamburger = document.getElementById('hamburger');
-  const sidebar = document.querySelector('.sidebar');
-  const overlay = document.getElementById('sidebar-overlay');
+  const sidebar   = document.querySelector('.sidebar');
+  const overlay   = document.getElementById('sidebar-overlay');
 
-  function openMenu() {
-    sidebar && sidebar.classList.add('open');
-    overlay && overlay.classList.add('open');
-    if (hamburger) hamburger.setAttribute('aria-expanded', 'true');
+  function openMenu()  {
+    sidebar  && sidebar.classList.add('open');
+    overlay  && overlay.classList.add('open');
+    hamburger && hamburger.setAttribute('aria-expanded', 'true');
   }
   function closeMenu() {
-    sidebar && sidebar.classList.remove('open');
-    overlay && overlay.classList.remove('open');
-    if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+    sidebar  && sidebar.classList.remove('open');
+    overlay  && overlay.classList.remove('open');
+    hamburger && hamburger.setAttribute('aria-expanded', 'false');
   }
 
   hamburger && hamburger.addEventListener('click', function() {
@@ -45,9 +50,9 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   overlay && overlay.addEventListener('click', closeMenu);
 
-  // Mark active nav link
+  // --- Active nav link ---
   const links = document.querySelectorAll('.sidebar nav a');
-  const path = window.location.pathname.replace(/\/$/, '') || '/';
+  const path  = window.location.pathname.replace(/\/$/, '') || '/';
   links.forEach(function(link) {
     const href = link.getAttribute('href');
     if (!href) return;
@@ -56,4 +61,5 @@ document.addEventListener('DOMContentLoaded', function() {
       if (linkPath === path) link.classList.add('active');
     } catch(e) {}
   });
+
 });
