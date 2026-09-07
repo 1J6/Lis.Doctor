@@ -150,8 +150,7 @@ function render() {
     const el = $('seat' + seat);
     const isActive = current === seat && !complete;
     const isWinner = ui.trickWinner === seat;
-    let html = `<div class="name">${auction.Dealer === seat ? '<span class="dealer-badge" title="Dealer">D</span>' : ''}${seatLabel(seat)}` +
-      (ui.thinking === seat ? ' <span class="dots">…</span>' : '') + `</div>`;
+    let html = `<div class="name">${auction.Dealer === seat ? '<span class="dealer-badge" title="Dealer">D</span>' : ''}${seatLabel(seat)}</div>`;
     if (seat !== USER) {
       const n = deal.Hands[seat].length;
       html += `<div class="backs" aria-label="${n} cards">${'<span class="mini-back"></span>'.repeat(n)}</div>`;
