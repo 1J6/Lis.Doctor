@@ -169,15 +169,28 @@ function render() {
   }
 
   // trick
+  // Slots are only rebuilt when their content changes, so the pop animation
+  // runs once, when a card is actually played, and not on every redraw.
   const trick = ui.showTrick || (playout ? playout.CurrentTrick : null);
-  for (let seat = 0; seat < 4; seat++) $('slot' + seat).innerHTML = '';
-  if (trick) {
-    const plays = Trick.plays(trick);
-    const winnerSeat = ui.trickWinner !== null && Trick.isComplete(trick) ? trick.HighPlay.seat : null;
-    plays.forEach(([seat, card], i) => {
-      const cls = `small ${Card.suit(card) === trump ? 'trump' : ''} ${winnerSeat === seat ? 'win' : ''} ${i === plays.length - 1 ? 'pop' : ''}`;
-      $('slot' + seat).innerHTML = cardHtml(card, cls, `style="z-index:${i + 1}" tabindex="-1"`);
-    });
+  const plays = trick ? Trick.plays(trick) : [];
+  const winnerSeat = trick && ui.trickWinner !== null && Trick.isComplete(trick) ? trick.HighPlay.seat : null;
+  const slotKeys = ['', '', '', ''];
+  plays.forEach(([seat, card], i) => {
+    const cls = `small ${Card.suit(card) === trump ? 'trump' : ''} ${winnerSeat === seat ? 'win' : ''}`;
+    slotKeys[seat] = `${card}|${cls}|${i}`;
+  });
+  for (let seat = 0; seat < 4; seat++) {
+    const slot = $('slot' + seat);
+    if (slot.dataset.key === slotKeys[seat]) continue;
+    if (!slotKeys[seat]) {
+      slot.innerHTML = '';
+    } else {
+      const [card, cls, i] = slotKeys[seat].split('|');
+      const isNew = slot.dataset.card !== card;
+      slot.innerHTML = cardHtml(Number(card), cls + (isNew ? ' pop' : ''), `style="z-index:${Number(i) + 1}" tabindex="-1"`);
+    }
+    slot.dataset.key = slotKeys[seat];
+    slot.dataset.card = slotKeys[seat] ? slotKeys[seat].split('|')[0] : '';
   }
 
   // hand
