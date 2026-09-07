@@ -134,11 +134,17 @@ function render() {
   if (playout) {
     const h = Playout.pointHolders(playout);
     const g = playout.GameScore;
-    const chip = (label, team) => {
+    // show the actual card that currently holds each point, e.g. "High A♠ N+S"
+    const cardTag = (rank) => trump === null || rank === undefined ? '' :
+      `<span class="pt-card ${trump === 1 || trump === 2 ? 'suit-red' : ''}">${rank === 10 ? '10' : 'JQKA'[rank - 11] || rank}${SUIT_CHARS[trump]}</span> `;
+    const chip = (label, team, rank) => {
       const cls = team === null ? '' : team === 0 ? 'ew' : 'ns';
-      return `<span class="chip ${cls}">${label} <b>${team === null ? '–' : TEAM_NAMES[team]}</b></span>`;
+      return `<span class="chip ${cls}">${label} ${team === null ? '' : cardTag(rank)}<b>${team === null ? '–' : TEAM_NAMES[team]}</b></span>`;
     };
-    status.innerHTML = chip('High', h.High) + chip('Low', h.Low) + chip('Jack', h.Jack) +
+    status.innerHTML =
+      chip('High', h.High, playout.HighTrump ? playout.HighTrump.rank : undefined) +
+      chip('Low', h.Low, playout.LowTrump ? playout.LowTrump.rank : undefined) +
+      chip('Jack', h.Jack, h.Jack === null ? undefined : Rank.Jack) +
       `<span class="chip">Game <b class="ew-b">${g[0]}</b> · <b>${g[1]}</b></span>`;
   } else {
     status.innerHTML = '<span class="chip">High · Low · Jack · Game</span>';

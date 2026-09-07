@@ -164,6 +164,8 @@ button {
 }
 
 .chip b { color: var(--cream); font-weight: 600; }
+.chip .pt-card { color: var(--cream); font-weight: 700; }
+.chip .pt-card.suit-red { color: #ff8a8a; }
 .chip.ew b { color: #ffd27a; }
 .chip.ns b { color: #9fe0ff; }
 
