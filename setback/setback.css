@@ -249,8 +249,9 @@ button {
   color: var(--ink);
   font-size: 12px;
   font-weight: 700;
-  animation: pop 0.25s ease-out;
 }
+
+.bubble.pop { animation: pop 0.25s ease-out; }
 
 .bubble.pass { background: rgba(245, 240, 228, 0.55); font-weight: 500; }
 .bubble.won { background: var(--gold); }

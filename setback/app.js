@@ -156,14 +156,24 @@ function render() {
       const n = deal.Hands[seat].length;
       html += `<div class="backs" aria-label="${n} cards">${'<span class="mini-back"></span>'.repeat(n)}</div>`;
     }
-    if (bidsBySeat.has(seat) && !(playout && Playout.numCardsPlayed(playout) > 0 && Playout.numCardsPlayed(playout) >= 4)) {
+    let bubbleText = '';
+    if (bidsBySeat.has(seat) && !(playout && Playout.numCardsPlayed(playout) >= 4)) {
       const bid = bidsBySeat.get(seat);
       const won = playout && auction.HighBidder === seat;
-      html += `<div class="bubble ${bid === Bid.Pass ? 'pass' : ''} ${won ? 'won' : ''}">${bid === Bid.Pass ? 'Pass' : bid}</div>`;
+      bubbleText = bid === Bid.Pass ? 'Pass' : String(bid);
+      // animate the bubble only when this bid first appears
+      const isNew = el.dataset.bubble !== bubbleText;
+      html += `<div class="bubble ${bid === Bid.Pass ? 'pass' : ''} ${won ? 'won' : ''} ${isNew ? 'pop' : ''}">${bubbleText}</div>`;
     } else if (playout && auction.HighBidder === seat) {
-      html += `<div class="bubble won">bid ${auction.HighBid}</div>`;
+      bubbleText = `bid ${auction.HighBid}`;
+      html += `<div class="bubble won">${bubbleText}</div>`;
     }
-    el.innerHTML = html;
+    // rebuild the seat only when something in it changed
+    if (el.dataset.key !== html) {
+      el.innerHTML = html;
+      el.dataset.key = html;
+      el.dataset.bubble = bubbleText;
+    }
     el.classList.toggle('active', isActive);
     el.classList.toggle('winner', isWinner);
   }
